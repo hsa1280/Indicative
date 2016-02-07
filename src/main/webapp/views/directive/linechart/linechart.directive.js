@@ -8,7 +8,7 @@ function lineChart() {
     		var chart = new CanvasJS.Chart("chartContainer",
     		{
     			zoomEnabled: false,
-                            animationEnabled: true,
+          animationEnabled: true,
     			title:{
     				text: "Mobile Phone Subscriptions"
     			},
@@ -21,10 +21,10 @@ function lineChart() {
     				gridColor: "#D7D7D7",
     	 			tickColor: "#D7D7D7"
     			},
-                            theme: "theme2",
-                            toolTip:{
-                                    shared: true
-                            },
+          theme: "theme2",
+          toolTip:{
+                  shared: true
+          },
     			legend:{
     				verticalAlign: "bottom",
     				horizontalAlign: "center",

@@ -1,0 +1,3 @@
+node_modules/
+src/main/webapp/appbuild.js
+.DS_Store

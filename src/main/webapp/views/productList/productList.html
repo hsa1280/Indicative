@@ -1,0 +1,43 @@
+<style type="text/css">
+      thead {color: green}
+      tr:nth-child(2n) {
+             background-color: #FFEBCD;
+        }
+      tr:nth-child(2n+1) {
+             background-color: #6699ff;
+        }
+      input, button {
+        margin-bottom: 0.5cm;
+        margin-top: 0.5cm;
+      }
+</style>
+<div>
+  <stats data="productListController.data"></stats></br>
+  <table style="width:100%" class="ng-cloak">
+    <thead>
+      <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Gender</td>
+        <td>Company Name</td>
+        <td>Job Title</td>
+        <td>Email</td>
+        <td>ID</td>
+      </tr>
+    </thead>
+
+    <input type="text" ng-model="productListController.firstNameInput">
+    <button type="button" class="pull-right" ng-click="productListController.addProduct()">ADD ROW</button>
+    <tbody>
+      <tr ng-repeat="user in productListController.data | firstNameFilter: productListController.firstNameInput">
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.company_name}}</td>
+        <td>{{user.job_title}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.id}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

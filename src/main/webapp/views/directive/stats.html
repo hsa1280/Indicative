@@ -1,0 +1,26 @@
+<style type="text/css">
+  .column-left{ float: left; width: 20%; }
+  .column-right{ float: right; width: 50%; }
+  .column-center{ display: inline-block; width: 30%; }
+</style>
+
+<h2 ALIGN=CENTER ng-click="toggleStats()">Stats</h2>
+<div class="container" ng-if="showStats">
+  <div class="column-left">
+    Total Users: {{data.length}}</br>
+    Total Colors: {{getColors()}}</br>
+    Percent of Females: {{getFemalePercent() | percentFilter: 2}}</br>
+    Percent of Males: {{ (1 - getFemalePercent()) | percentFilter: 2}}</br>
+  </div>
+  <div class="column-center">
+   Total Users who performed a "signed_up": {{getSignedUpUsers()}}</br>
+   Total Users who performed a "viewed_profile": {{getViewedProfileUsers()}}</br>
+   Total Users who performed a "viewed_item": {{getViewedItemUsers()}}</br>
+   Total Users who performed a "purchased_item": {{getPurchasedItemUsers()}}</br>
+  </div>
+  <div class="column-right">
+   Conversion from "signed_up" -> "purchased_item": {{getSignedUptoPurchasedUsers()}}</br>
+   Conversion from "signed_up" -> "viewed_profile" -> "purchased_item": {{getSignedUptoViewedProfileToPurchasedUsers()}}</br>
+   Conversion from "signed_up" -> "viewed_item" -> "purchase_item": {{getSignedUptoViewedItemToPurchasedUsers()}}</br>
+  </div>
+</div>

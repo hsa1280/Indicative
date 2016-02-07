@@ -11,13 +11,12 @@
     "angular-resource": "^1.4.4",
     "angular-route": "^1.4.5",
     "angular-ui-router": "^0.2.15"
-
   },
   "devDependencies": {
+    "babelify": "^6.1.0",
     "browserify": "^11.0.1",
-    "grunt-browserify": "^4.0.0",
     "grunt": "0.4.5",
-    "babelify": "^6.1.0"
+    "grunt-browserify": "^4.0.0"
   },
   "repository": {
     "type": "git",

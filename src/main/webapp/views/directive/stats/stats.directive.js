@@ -108,7 +108,7 @@ function stats( cart, $state ) {
         return count;
       }
     },
-		templateUrl: 'directive/stats.html'
+		templateUrl: 'directive/stats/stats.html'
 	}
 }
 

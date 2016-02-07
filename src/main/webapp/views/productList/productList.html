@@ -5,14 +5,33 @@
       tbody>tr:nth-child(2n+1) {
              background-color: #6699ff;
         }
-      input, button {
+      input {
         margin-bottom: 0.5cm;
         margin-top: 0.5cm;
+        margin-left: 0.5cm;
+      }
+      button {
+        margin-bottom: 0.5cm;
+        margin-top: 0.5cm;
+        margin-right: 1.5cm;
+      }
+      table {
+        margin-left: 0.5cm;
+        margin-right: 0.5cm;
       }
 </style>
 <div>
+
+
+  <!-- lineChart -->
+  <line-chart></line-chart>
+</br>
+</br>
+  <!-- Stats directive -->
   <stats data="productListController.data"></stats></br>
-  <table style="width:100%" class="ng-cloak" border="1">
+
+  <!-- Table -->
+  <table style="width:97%" class="ng-cloak" border="1">
     <thead>
       <tr>
         <td>First Name</td>

@@ -1,9 +1,8 @@
 <style type="text/css">
-      thead {color: green}
-      tr:nth-child(2n) {
+      tbody>tr:nth-child(2n) {
              background-color: #FFEBCD;
         }
-      tr:nth-child(2n+1) {
+      tbody>tr:nth-child(2n+1) {
              background-color: #6699ff;
         }
       input, button {
@@ -13,7 +12,7 @@
 </style>
 <div>
   <stats data="productListController.data"></stats></br>
-  <table style="width:100%" class="ng-cloak">
+  <table style="width:100%" class="ng-cloak" border="1">
     <thead>
       <tr>
         <td>First Name</td>

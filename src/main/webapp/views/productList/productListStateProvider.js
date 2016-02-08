@@ -6,7 +6,6 @@
 const annotation = ['$stateProvider'];
 
 function productListStateProvider($stateProvider) {
-    console.log('in stateProvider again');
     $stateProvider.
         state('productList', {
             url: '/productList',

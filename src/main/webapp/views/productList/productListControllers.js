@@ -13,7 +13,6 @@ class ProductListController {
     getProducts() {
     	this.cart.getProductList().then( response => {
     		this.data = response;
-    		console.log('response ', response);
     	});
     }
 

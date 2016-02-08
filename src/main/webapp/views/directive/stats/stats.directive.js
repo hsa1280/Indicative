@@ -5,6 +5,7 @@ function stats( cart, $state ) {
       data: '='
     },
     controller: function( $scope ) {
+			console.log('data --> ', $scope.data);
       $scope.showStats = true;
       $scope.toggleStats = function() {
         $scope.showStats = !$scope.showStats;

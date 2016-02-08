@@ -1,22 +1,52 @@
 function lineChart() {
 	return {
 		restrict: 'E',
+		scope: {
+			listData: '='
+		},
     controller: function( $scope ) {
       $scope.flipChart = true;
-      $scope.initializeLineChart = false;
+			$scope.initializeLineChart = false;
+
+			$scope.getDataPoints = function() {
+				var myMap = new Map();
+				if ($scope.listData) {
+					$scope.listData.forEach( user => {
+						if (user.purchased_item && user.purchased_item.date) {
+							if ( myMap.has(user.purchased_item.date) ) {
+								myMap.set(user.purchased_item.date, myMap.get(user.purchased_item.date) + 1);
+							} else {
+								myMap.set(user.purchased_item.date, 1);
+							}
+						}
+					});
+				}
+
+				return myMap;
+			}
+
       $scope.createLineChart = function () {
+				console.log('$scope data --> ',$scope.listData);
+				var data = [];
+				$scope.getDataPoints().forEach( (key, value) =>  {
+					data.push({
+						x: new Date(value),
+						y: key
+					})
+				})
+				$scope.initializeLineChart = true;
     		var chart = new CanvasJS.Chart("chartContainer",
     		{
     			zoomEnabled: false,
           animationEnabled: true,
     			title:{
-    				text: "Mobile Phone Subscriptions"
+    				text: "Customers purchase line chart"
     			},
     			axisY2:{
-    				valueFormatString:"0.0 bn",
+    				valueFormatString:"0",
 
-    				maximum: 1.2,
-    				interval: .2,
+    				maximum: 10,
+    				interval: 1,
     				interlacedColor: "#F5F5F5",
     				gridColor: "#D7D7D7",
     	 			tickColor: "#D7D7D7"
@@ -37,22 +67,9 @@ function lineChart() {
       				type: "line",
       				lineThickness:3,
       				showInLegend: true,
-      				name: "China",
+      				name: "purchase",
       				axisYType:"secondary",
-      				dataPoints: [
-      				{ x: new Date(2001, 0), y: 0.18 },
-      				{ x: new Date(2002, 0), y: 0.2 },
-      				{ x: new Date(2003, 0), y: 0.25},
-      				{ x: new Date(2004, 0), y: 0.35 },
-      				{ x: new Date(2005, 0), y: 0.42 },
-      				{ x: new Date(2006, 0), y: 0.5 },
-      				{ x: new Date(2007, 0), y: 0.58 },
-      				{ x: new Date(2008, 0), y: 0.67  },
-      				{ x: new Date(2009, 0), y: 0.78},
-      				{ x: new Date(2010, 0), y: 0.88 },
-      				{ x: new Date(2011, 0), y: 0.98 },
-      				{ x: new Date(2012, 0), y: 1.04 }
-      				]
+							dataPoints: data
       			}
     			],
           legend: {
@@ -73,10 +90,10 @@ function lineChart() {
       }
 
       $scope.hideShowChart = function() {
+				$scope.createLineChart();
         $scope.flipChart = !$scope.flipChart;
+				console.log('data points -->', $scope.getDataPoints());
       }
-      $scope.createLineChart();
-
     },
 		templateUrl: 'directive/lineChart/lineChart.html'
 	}

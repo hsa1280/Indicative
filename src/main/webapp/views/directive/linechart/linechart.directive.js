@@ -66,10 +66,10 @@ function lineChart() {
 					vAxis: {
 						title: 'purchases'
 					},
-					width:900,
+					width:1100,
           height:300,
-					curveType: 'function',
-					pointSize: 20
+					// curveType: 'function',
+					pointSize: 10
 				};
 
 				var chart = new google.visualization.LineChart(document.getElementById('chart_div'));

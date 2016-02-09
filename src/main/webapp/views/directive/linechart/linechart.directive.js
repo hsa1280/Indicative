@@ -9,6 +9,7 @@ function lineChart() {
       $scope.flipChart = true;
 			$scope.showByColor = false;
 
+			//get data for customer purchases / date
 			$scope.getDateDataPoints = function() {
 				var myMap = new Map();
 				if ($scope.listData) {
@@ -26,6 +27,7 @@ function lineChart() {
 				return myMap;
 			}
 
+			//get data for customer purchases / color
 			$scope.getColorDataPoints = function() {
 				var myMap = new Map();
 				if ($scope.listData) {
@@ -66,7 +68,7 @@ function lineChart() {
 					vAxis: {
 						title: 'purchases'
 					},
-					width:1100,
+					width:1000,
           height:300,
 					// curveType: 'function',
 					pointSize: 10

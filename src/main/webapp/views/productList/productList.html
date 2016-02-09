@@ -6,12 +6,12 @@
              background-color: #ccffff;
         }
       input {
-        margin-bottom: 0.5cm;
+        margin-bottom: 0.2cm;
         margin-top: 0.5cm;
         margin-left: 0.5cm;
       }
       button {
-        margin-bottom: 0.5cm;
+        margin-bottom: 0.2cm;
         margin-top: 0.5cm;
         margin-right: 1.5cm;
       }
@@ -45,13 +45,13 @@
     <button class="btn btn-primary pull-right" type="button" ng-click="productListController.addProduct()">ADD ROW</button>
     <tbody>
       <tr ng-repeat="user in productListController.data | firstNameFilter: productListController.firstNameInput">
-        <td>{{user.first_name}}</td>
-        <td>{{user.last_name}}</td>
-        <td>{{user.gender}}</td>
-        <td>{{user.company_name}}</td>
-        <td>{{user.job_title}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.id}}</td>
+        <td>{{user.first_name || '--'}}</td>
+        <td>{{user.last_name || '--'}}</td>
+        <td>{{user.gender || '--'}}</td>
+        <td>{{user.company_name || '--'}}</td>
+        <td>{{user.job_title || '--'}}</td>
+        <td>{{user.email || '--'}}</td>
+        <td>{{user.id || '--'}}</td>
       </tr>
     </tbody>
   </table>

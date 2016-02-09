@@ -87,6 +87,7 @@ function stats( cart, $state ) {
         return count;
       }
 
+			//get signed_up to viewed_profile to purchased_item conversion
       $scope.getSignedUptoViewedProfileToPurchasedUsers = function() {
         var count = 0;
         $scope.data.forEach( user => {
@@ -100,6 +101,7 @@ function stats( cart, $state ) {
         return count;
       }
 
+			//get signed_up to viewed_item to purchased_item conversion
       $scope.getSignedUptoViewedItemToPurchasedUsers = function() {
         var count = 0;
         $scope.data.forEach( user => {

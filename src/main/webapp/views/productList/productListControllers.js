@@ -3,7 +3,7 @@ const annotation = ['cart'];
 class ProductListController {
 
     constructor(cart) {
-        this.pageSize = 3;
+      this.pageSize = 3;
   		this.data = [];
   		this.cart = cart;
       this.watch = 0;
@@ -19,6 +19,7 @@ class ProductListController {
 
     addProduct() {
       this.cart.addProduct().then( product =>{
+        //pass it to directive to update
         this.watch++;
         this.data.push(product[0]);
       })

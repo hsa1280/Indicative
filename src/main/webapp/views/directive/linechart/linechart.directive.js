@@ -61,11 +61,15 @@ function lineChart() {
 
 				var options = {
 					hAxis: {
-						title: 'date/color'
+						title: $scope.showByColor ? 'color' :  'date'
 					},
 					vAxis: {
 						title: 'purchases'
-					}
+					},
+					width:900,
+          height:300,
+					curveType: 'function',
+					pointSize: 20
 				};
 
 				var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -73,7 +77,7 @@ function lineChart() {
 				chart.draw(data, options);
       }
 
-			$scope.switchByColor = function() {
+			$scope.showByColorFunc = function() {
 				$scope.showByColor = true;
 				$scope.createLineChart();
 			}

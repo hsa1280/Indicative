@@ -1,0 +1,5 @@
+To start the app,
+
+1. npm install -g http-server
+2. type http-server to start the server
+3. go to http://192.168.1.74:8080/src/main/webapp/views/index.html#/productList (http://192.168.1.74:8080, this part maybe different on different machines)

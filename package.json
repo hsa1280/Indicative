@@ -1,7 +1,7 @@
 {
-  "name": "UserManagementMaven",
+  "name": "Indicative",
   "version": "1.0.0",
-  "description": "http://localhost:8080/html/facilityHome.html",
+  "description": "This a an assignment",
   "main": "index.js",
   "scripts": {
     "test": "grunt test"
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hsa1280/UserManagementMaven.git"
+    "url": "https://github.com/hsa1280/Indicative"
   },
   "author": "Shian Huang",
   "license": "ISC"

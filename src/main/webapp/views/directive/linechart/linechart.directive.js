@@ -2,13 +2,14 @@ function lineChart() {
 	return {
 		restrict: 'E',
 		scope: {
-			listData: '='
+			listData: '=',
+			watch: '='
 		},
     controller: function( $scope ) {
       $scope.flipChart = true;
-			$scope.initializeLineChart = false;
+			$scope.showByColor = false;
 
-			$scope.getDataPoints = function() {
+			$scope.getDateDataPoints = function() {
 				var myMap = new Map();
 				if ($scope.listData) {
 					$scope.listData.forEach( user => {
@@ -25,75 +26,73 @@ function lineChart() {
 				return myMap;
 			}
 
+			$scope.getColorDataPoints = function() {
+				var myMap = new Map();
+				if ($scope.listData) {
+					$scope.listData.forEach( user => {
+						if (user.purchased_item && user.purchased_item.color) {
+							if ( myMap.has(user.purchased_item.color) ) {
+								myMap.set(user.purchased_item.color, myMap.get(user.purchased_item.color) + 1);
+							} else {
+								myMap.set(user.purchased_item.color, 1);
+							}
+						}
+					});
+				}
+
+				return myMap;
+			}
+
       $scope.createLineChart = function () {
-				console.log('$scope data --> ',$scope.listData);
-				var data = [];
-				$scope.getDataPoints().forEach( (key, value) =>  {
-					data.push({
-						x: new Date(value),
-						y: key
-					})
-				})
-				$scope.initializeLineChart = true;
-    		var chart = new CanvasJS.Chart("chartContainer",
-    		{
-    			zoomEnabled: false,
-          animationEnabled: true,
-    			title:{
-    				text: "Customers purchase line chart"
-    			},
-    			axisY2:{
-    				valueFormatString:"0",
+				var dateData = [];
+				var colorData = [];
+				$scope.getDateDataPoints().forEach( (key, value) =>  {
+					dateData.push([ value, key ]);
+				});
 
-    				maximum: 10,
-    				interval: 1,
-    				interlacedColor: "#F5F5F5",
-    				gridColor: "#D7D7D7",
-    	 			tickColor: "#D7D7D7"
-    			},
-          theme: "theme2",
-          toolTip:{
-                  shared: true
-          },
-    			legend:{
-    				verticalAlign: "bottom",
-    				horizontalAlign: "center",
-    				fontSize: 15,
-    				fontFamily: "Lucida Sans Unicode"
+				$scope.getColorDataPoints().forEach( (key, value) =>  {
+					colorData.push([ value, key ]);
+				});
 
-    			},
-    			data: [
-      			{
-      				type: "line",
-      				lineThickness:3,
-      				showInLegend: true,
-      				name: "purchase",
-      				axisYType:"secondary",
-							dataPoints: data
-      			}
-    			],
-          legend: {
-            cursor:"pointer",
-            itemclick : function(e) {
-              if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-              e.dataSeries.visible = false;
-              }
-              else {
-                e.dataSeries.visible = true;
-              }
-              chart.render();
-            }
-          }
-        });
+				var data = new google.visualization.DataTable();
+				data.addColumn('string', 'date/color');
+				data.addColumn('number', 'purchases');
+				data.addRows($scope.showByColor ? colorData : dateData);
 
-      chart.render();
+				var options = {
+					hAxis: {
+						title: 'date/color'
+					},
+					vAxis: {
+						title: 'purchases'
+					}
+				};
+
+				var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+				chart.draw(data, options);
       }
 
-      $scope.hideShowChart = function() {
+			$scope.switchByColor = function() {
+				$scope.showByColor = true;
+				$scope.createLineChart();
+			}
+
+      $scope.showChart = function() {
+				$scope.showByColor = false;
 				$scope.createLineChart();
         $scope.flipChart = !$scope.flipChart;
-				console.log('data points -->', $scope.getDataPoints());
       }
+
+			$scope.hideChart = function() {
+				$scope.flipChart = !$scope.flipChart;
+			}
+
+			$scope.$watch(function(scope) {
+				return scope.watch;
+			}, function() {
+				$scope.createLineChart();
+			});
     },
 		templateUrl: 'directive/lineChart/lineChart.html'
 	}

@@ -6,6 +6,7 @@ class ProductListController {
         this.pageSize = 3;
   		this.data = [];
   		this.cart = cart;
+      this.watch = 0;
       this.firstNameInput = '';
   		this.getProducts();
     }
@@ -18,6 +19,7 @@ class ProductListController {
 
     addProduct() {
       this.cart.addProduct().then( product =>{
+        this.watch++;
         this.data.push(product[0]);
       })
     }

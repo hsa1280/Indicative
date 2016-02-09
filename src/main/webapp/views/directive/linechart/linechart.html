@@ -1,6 +1,9 @@
-<button ng-click="hideShowChart()" ng-if="flipChart">Show LineChart</button>
+<button ng-click="showChart()" ng-if="flipChart">Show LineChart</button>
 
-<div ng-show="!flipChart" id="chartContainer" style="height: 300px; width: 80%;">
-</div>
+<!-- <div ng-show="!flipChart" id="chartContainer" style="height: 300px; width: 80%;">
+</div> -->
+<div ng-show="!flipChart" id="chart_div"></div>
 
-<button ng-click="hideShowChart()" class="pull-right" ng-if="!flipChart">Hide LineChart</button>
+<button ng-click="hideChart()" class="pull-right" ng-if="!flipChart">Hide LineChart</button>
+
+<button ng-click="switchByColor()" class="pull-right" ng-if="!flipChart">Switch by color</button>

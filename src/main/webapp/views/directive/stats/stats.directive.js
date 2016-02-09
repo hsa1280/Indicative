@@ -22,9 +22,13 @@ function stats( cart, $state ) {
 
       $scope.getColors = function() {
         var count = 0;
+				var colorMap = new Map();
         $scope.data.forEach( user => {
-          if( user.purchased_item ) {
-            if( user.purchased_item.color ) count++;
+          if( user.purchased_item && user.purchased_item.color ) {
+            if( !colorMap.has( user.purchased_item.color ) ) {
+							count++;
+							colorMap.set(user.purchased_item.color, 1);
+						}
           }
         });
 

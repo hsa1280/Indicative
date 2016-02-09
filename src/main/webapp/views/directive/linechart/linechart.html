@@ -1,9 +1,36 @@
-<button class="btn btn-primary" ng-click="showChart()" ng-if="flipChart">Show LineChart</button>
+<style type="text/css">
+  .col-1{
+    float: left;
+    width: 75%;
+   }
+  .col-2{
+    float: right;
+    width: 25%;
+  }
+  #showChart {
+    margin-left: 1cm;
+  }
+</style>
+
+<button id="showChart" class="btn btn-primary" ng-click="showChart()" ng-if="flipChart">Show LineChart</button>
 
 <!-- <div ng-show="!flipChart" id="chartContainer" style="height: 300px; width: 80%;">
 </div> -->
-<div ng-show="!flipChart" id="chart_div"></div>
+<div class="row">
+  <div class="col-1" ng-show="!flipChart" id="chart_div"></div>
+</br>
+</br>
+  <div class="col-2 pull-right">
+    <div>
+      <button class="btn btn-primary" ng-click="hideChart()" ng-if="!flipChart">
+        Hide LineChart
+      </button>
+    </div>
 
-<button class="btn btn-primary pull-right" ng-click="hideChart()" ng-if="!flipChart">Hide LineChart</button>
-
-<button class="btn btn-primary pull-right" ng-click="showByColorFunc()" ng-if="!flipChart">Show by color</button>
+    <div>
+      <button class="btn btn-primary" ng-click="showByColorFunc()" ng-if="!flipChart">
+        Show by color
+      </button>
+    </div>
+  </div>
+</div>
